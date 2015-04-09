@@ -49,4 +49,12 @@ public class MoneyTest {
 		Money expected = new Money(100, "EUR");
 		assertThat(money1.multiplyBy(10), is(equalTo(expected)));
 	}
+	
+	@Test
+		public void test10PLNlessThan100PLN_resultTrue() {
+			Money m1 = new Money(10.00, "PLN");
+			Money m2 = new Money(100.00, "PLN");
+	
+			assertThat(m1.lessThan(m2), is(true));
+		}
 }
