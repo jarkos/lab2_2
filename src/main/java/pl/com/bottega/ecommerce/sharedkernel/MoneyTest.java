@@ -71,6 +71,7 @@ public class MoneyTest {
 		assertThat(money1.equals(money2), is(true));
 	}
 	
+	@Test
 	public void test100PLNlessOrEquals100PLN_shouldResultTrue() {
 		Money money1 = new Money(99, "PLN");
 		Money money2 = new Money(100, "PLN");
