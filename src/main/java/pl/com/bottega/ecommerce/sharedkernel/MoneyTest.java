@@ -30,7 +30,7 @@ public class MoneyTest {
 	}
 	
 	@Test (expected = IllegalArgumentException.class)
-		public void testSubstract20PLNand10GBP_shouldIllegalArgumentExceptionResult() {
+		public void testSubstract20PLNand10GBP_shouldThrowIllegalArgumentException() {
 			Money money1 = new Money(20, "PLN");
 			Money money2 = new Money(10, "GBP");
 			money1.subtract(money2);		
@@ -44,17 +44,23 @@ public class MoneyTest {
 		}
 	
 	@Test (expected = java.lang.AssertionError.class)
-	public void test10PLNmultiplyBy10_sholudReturn100EUR_resultTrue() {
+	public void test10PLNmultiplyBy10_sholudReturn100EUR_shouldThrowAssertionError() {
 		Money money1 = new Money(10, "PLN");
 		Money expected = new Money(100, "EUR");
 		assertThat(money1.multiplyBy(10), is(equalTo(expected)));
 	}
 	
 	@Test
-		public void test10PLNlessThan100PLN_resultTrue() {
+		public void test10PLNlessThan100PLN_shouldResultTrue() {
 			Money m1 = new Money(10.00, "PLN");
 			Money m2 = new Money(100.00, "PLN");
-	
 			assertThat(m1.lessThan(m2), is(true));
 		}
+	
+	@Test
+	public void test99PLNgreaterThan100PLN_shouldResultFalse() {
+		Money m1 = new Money(99, "PLN");
+		Money m2 = new Money(100, "PLN");
+		assertThat(m1.greaterThan(m2), is(false));
+	}
 }
