@@ -63,4 +63,11 @@ public class MoneyTest {
 		Money m2 = new Money(100, "PLN");
 		assertThat(m1.greaterThan(m2), is(false));
 	}
+	
+	@Test
+	public void test100PLNequals100PLN_shouldResultTrue() {
+		Money m1 = new Money(100, "PLN");
+		Money m2 = new Money(100, "PLN");
+		assertThat(m1.equals(m2), is(true));
+	}
 }
